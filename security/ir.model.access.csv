@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_robe_occasion,access_robe_occasion,model_robe_occasion,base.group_user,1,1,1,1
+access_rendez_vous,access_rendez_vous,model_rendez_vous,base.group_user,1,1,1,1
+access_reservation_robe,access_reservation_robe,model_reservation_robe,base.group_user,1,1,1,1

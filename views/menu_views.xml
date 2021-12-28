@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<odoo>
+    <menuitem id="wahiba_menu_root" name="Espace Wahiba">
+
+
+        <menuitem id="espace_wahiba_first_level_menu" name="Menu">
+            <menuitem id="robe_occasion_menu_action" action="robe_occasion_action"/>
+            <menuitem id="reservation_robe_menu_action" action="reservation_robe_action"/>
+            <menuitem id="rdv_menu_action" action="rdv_action"/>
+            <menuitem id="service_esthetique_menu_action" action="service_esthetique_action"/>
+        </menuitem>
+
+        <!-- <menuitem id="estate_first_level_menu_2" name="Settings">
+            <menuitem id="estate_type_menu_action" action="estate_type_action"/>
+            <menuitem id="estate_tags_menu_action" action="estate_tags_action"/>
+        </menuitem> -->
+
+    </menuitem>
+</odoo>
