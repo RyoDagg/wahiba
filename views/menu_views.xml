@@ -4,6 +4,7 @@
 
 
         <menuitem id="espace_wahiba_first_level_menu" name="Menu">
+            <menuitem id="robe_model_menu_action" action="robe_model_action"/>
             <menuitem id="robe_occasion_menu_action" action="robe_occasion_action"/>
             <menuitem id="reservation_robe_menu_action" action="reservation_robe_action"/>
             <menuitem id="rdv_menu_action" action="rdv_action"/>

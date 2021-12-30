@@ -11,6 +11,14 @@ class ReservationRobe(models.Model):
         string = "Client"
     )
 
+    etats = fields.Selection(
+        string="Etats",
+        selection=[
+            ('attente', 'Attente'),
+            ('Confirme', 'Confirmé'),
+            ('annule', 'Annulé')],
+        default = 'attente')
+
     robe_id = fields.Many2one(
         string="Robe à louer",
         comodel_name="robe.occasion")

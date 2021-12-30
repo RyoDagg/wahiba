@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <odoo>
-    <record id="robe_view_tree" model="ir.ui.view">
-        <field name="name">robe.occasion.tree</field>
-        <field name="model">robe.occasion</field>
+    <record id="robe_model_view_tree" model="ir.ui.view">
+        <field name="name">robe.model.tree</field>
+        <field name="model">robe.model</field>
         <field name="arch" type="xml">
             <tree>
                 <field name="ref"/>
@@ -11,6 +11,16 @@
                 <field name="type"/>
                 <field name="prix_achat"/>
                 <field name="prix_location"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="robe_view_tree" model="ir.ui.view">
+        <field name="name">robe.occasion.tree</field>
+        <field name="model">robe.occasion</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="ref_robe"/>
             </tree>
         </field>
     </record>

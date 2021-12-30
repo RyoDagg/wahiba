@@ -1,5 +1,11 @@
 <?xml version="1.0"?>
 <odoo>
+	<record id="robe_model_action" model="ir.actions.act_window">
+		<field name="name">Liste des modèle</field>
+		<field name="res_model">robe.model</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+
 	<record id="robe_occasion_action" model="ir.actions.act_window">
 		<field name="name">Liste des robe</field>
 		<field name="res_model">robe.occasion</field>
