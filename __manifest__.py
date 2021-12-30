@@ -2,7 +2,7 @@
 {
     'name': "Espace Wahiba",
 
-    'summary': """Système de gestion des réservations pour Espace Wahiba""",
+    'summary': "Système de gestion des réservations pour Espace Wahiba",
 
     'description': """
         Long description of module's purpose
