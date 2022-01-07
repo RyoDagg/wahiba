@@ -22,7 +22,7 @@ class RobeOccasion(models.Model):
     )
 
     nbr_amort = fields.Integer(
-        string="Nombre d'mortissement"
+        string="Nombre d'mortissement",
         default = 0,
         compute = 'calc_nbr_amort'
     )
