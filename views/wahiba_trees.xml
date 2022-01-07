@@ -21,6 +21,8 @@
         <field name="arch" type="xml">
             <tree>
                 <field name="ref_robe"/>
+                <field name="nom"/>
+                <field name="nbr_amort"/>
             </tree>
         </field>
     </record>

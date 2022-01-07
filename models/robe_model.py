@@ -44,43 +44,24 @@ class RobeModel(models.Model):
     tag_ids = fields.Many2many(
         string="tags",
         comodel_name="robe.tag")
-    #
-    # # foreign keys    @api.depends('type')
-    # def _generate_ref(self):
-    #     for robe in self:
-    #         # code = str(self.env.search_count([('', '=', 'entry')]))
-    #         robe.ref = str(robe.type).upper() + '#' + str(robe.id).upper()
 
 
-    #Overriding create method
-
-    @api.model
-    def _test(self):
-        print('*-*-*-*-*-*-*-*-*-*-*-*-*-*-')
-        print('*-*-*-*-*-*-*-*-*-*-*-*-*-*-')
-        print('*-*-*-*-*-*-*-*-*-*-*-*-*-*-')
-        print('*-*-*-*-*-*-*-*-*-*-*-*-*-*-')
-        print('111111111111111111111111111',self.quant)
-        for rec in self:
-            print('*-*-*-*-*-*-*-*-*-*-*-*-*-*-')
-            print('*-*-*-*-*-*-*-*-*-*-*-*-*-*-')
-            print('222222222222222222222222',rec.quant)
-            print('*-*-*-*-*-*-*-*-*-*-*-*-*-*-')
-            print('*-*-*-*-*-*-*-*-*-*-*-*-*-*-')
-
+    #Overriding create
     @api.model
     def create(self, vals):
         res = super(RobeModel, self).create(vals)
         print("--------------------------------------")
-        # print('1--------',self.nom) #self is empty here
         print(res)
         print("--------------------------------------")
-        # print(_self.super(rboc.RobeOccasion, _self).create({'robe_model_id': 26, 'reservation_ids': [], 'nbr_amort' : 5}))
         print('*-*-*-*-*-*-*-*-*-*-*-*-*-*-')
         print(res.nom)
         print('*-*-*-*-*-*-*-*-*-*-*-*-*-*-')
         for i in range(vals["quant"]):
-            super(rboc.RobeOccasion, self.env['robe.occasion']).create({'robe_model_id': res.id, 'ref_robe' : "%s_%s" %(vals['nom'],i+1)})
+            super(rboc.RobeOccasion, self.env['robe.occasion']).create({
+                'robe_model_id': res.id,
+                'ref_robe' : "%s_%s" %(res.ref,i+1),
+                'nom' : "%s #%s" %(res.nom,i+1)
+            })
         return res
 
     @api.depends('type')
@@ -89,7 +70,6 @@ class RobeModel(models.Model):
             # print('New Type assigned', robe.type, robe.quant) #self <-- values test message
             # code = str(self.env.search_count([('', '=', 'entry')]))
             robe.ref = str(robe.type).upper() + '#' + str(id(robe.id)).upper()
-            # RobeModel._test(self)
 
     def name_get(self):
         result = []

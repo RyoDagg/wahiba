@@ -11,6 +11,8 @@ class RobeOccasion(models.Model):
         store = True
         )
 
+    nom = fields.Char()
+
     robe_model_id = fields.Many2one(
         string="Modèle du Robe",
         comodel_name="robe.model"
@@ -27,13 +29,13 @@ class RobeOccasion(models.Model):
         compute = 'calc_nbr_amort'
     )
 
-    # @api.depends('reservation_ids')
-    # def calc_nbr_amort(self):
-    #     for record in self:
-    #         if record.reservation_ids:
-    #             record.nbr_amort = len(record.reservation_ids)
-    #         else:
-    #             record.nbr_amort = 0
+    @api.depends('reservation_ids')
+    def calc_nbr_amort(self):
+        for record in self:
+            if record.reservation_ids:
+                record.nbr_amort = len(record.reservation_ids)
+            else:
+                record.nbr_amort = 0
 
     # def name_get(self):
     #     result = []
