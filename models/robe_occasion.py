@@ -11,20 +11,25 @@ class RobeOccasion(models.Model):
         store = True
         )
 
-    nom = fields.Char()
+    active = fields.Boolean(
+        default = True,
+        compute = '_check_validity',
+        store = True)
 
-    robe_model_id = fields.Many2one(
-        string="Modèle du Robe",
-        comodel_name="robe.model"
+    nom = fields.Char("Nom du robe")
+
+    model_id = fields.Many2one(
+        string = "Modèle du Robe",
+        comodel_name = "robe.model"
     )
 
     reservation_ids = fields.One2many(
-        comodel_name="reservation.robe",
-        inverse_name="robe_id"
+        comodel_name = "reservation.robe",
+        inverse_name = "robe_id"
     )
 
     nbr_amort = fields.Integer(
-        string="Nombre d'mortissement",
+        string = "Nombre d'mortissement",
         default = 0,
         compute = 'calc_nbr_amort'
     )
@@ -33,13 +38,26 @@ class RobeOccasion(models.Model):
     def calc_nbr_amort(self):
         for record in self:
             if record.reservation_ids:
-                record.nbr_amort = len(record.reservation_ids)
+                count = 0
+                for res in record.reservation_ids:
+                    if(res.etats == 'Confirme'):
+                        count += 1
+                record.nbr_amort = count
             else:
                 record.nbr_amort = 0
 
-    # def name_get(self):
-    #     result = []
-    #     for record in self:
-    #         rec_name = "%s" %(record.nom)
-    #         result.append((record.id, rec_name))
-    #     return result
+    @api.depends('nbr_amort')
+    def _check_validity(self):
+        for record in self:
+            max = record.model_id.nbr_amort_max
+            if record.nbr_amort >= max :
+                record.active = False
+            else:
+                record.active = True
+
+    def name_get(self):
+        result = []
+        for record in self:
+            rec_name = "%s" %(record.nom)
+            result.append((record.id, rec_name))
+        return result

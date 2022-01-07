@@ -5,8 +5,9 @@ class RobeModel(models.Model):
     _name = 'robe.model'
     _description = 'Modele du robe.'
     _sql_constraints = [
-        ('uniq_ref', 'UNIQUE (ref)', 'Reference must be unique.')
-        # ('uniq_ref', 'NOT NULL (ref)', 'Reference must be not null.')
+        ('uniq_ref', 'UNIQUE (ref)', 'Reference must be unique.'),
+        ('amort_max_positive', 'CHECK (nbr_amort_max>0)', 'Nombre Maximal des amortissement doit etre positive'),
+        ('positive_quant', 'CHECK (quant>0)', 'Quantité doit etre positive')
     ]
 
     ref = fields.Char(
@@ -34,8 +35,10 @@ class RobeModel(models.Model):
     robe_ids = fields.One2many(
         string="Liste des robe pour ce modèle",
         comodel_name="robe.occasion",
-        inverse_name="robe_model_id"
+        inverse_name="model_id"
     )
+
+    nbr_amort_max = fields.Integer("Nombre D'amortissement Maximal")
 
     prix_achat = fields.Float(string="Prix d\'achat")
     prix_location = fields.Float(string="Prix de location")
@@ -50,15 +53,15 @@ class RobeModel(models.Model):
     @api.model
     def create(self, vals):
         res = super(RobeModel, self).create(vals)
-        print("--------------------------------------")
-        print(res)
-        print("--------------------------------------")
-        print('*-*-*-*-*-*-*-*-*-*-*-*-*-*-')
-        print(res.nom)
-        print('*-*-*-*-*-*-*-*-*-*-*-*-*-*-')
+        # print("--------------------------------------")
+        # print(res)
+        # print("--------------------------------------")
+        # print('*-*-*-*-*-*-*-*-*-*-*-*-*-*-')
+        # print(res.nom)
+        # print('*-*-*-*-*-*-*-*-*-*-*-*-*-*-')
         for i in range(vals["quant"]):
             super(rboc.RobeOccasion, self.env['robe.occasion']).create({
-                'robe_model_id': res.id,
+                'model_id': res.id,
                 'ref_robe' : "%s_%s" %(res.ref,i+1),
                 'nom' : "%s #%s" %(res.nom,i+1)
             })
