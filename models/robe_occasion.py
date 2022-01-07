@@ -22,9 +22,9 @@ class RobeOccasion(models.Model):
     )
 
     nbr_amort = fields.Integer(
-        string="Nombre d'mortissement",
-        default = 0,
-        compute = 'calc_nbr_amort'
+        string="Nombre d'mortissement"
+        # default = 0,
+        # compute = 'calc_nbr_amort'
     )
 
     #
@@ -33,17 +33,31 @@ class RobeOccasion(models.Model):
     #         # code = str(self.env.search_count([('', '=', 'entry')]))
     #         robe.ref = str(robe.type).upper() + '#' + str(robe.id).upper()
 
-    @api.depends('reservation_ids')
-    def calc_nbr_amort(self):
-        for record in self:
-            if record.reservation_ids:
-                record.nbr_amort = len(record.reservation_ids)
-            else:
-                record.nbr_amort = 0
+    # @api.depends('reservation_ids')
+    # def calc_nbr_amort(self):
+    #     for record in self:
+    #         if record.reservation_ids:
+    #             record.nbr_amort = len(record.reservation_ids)
+    #         else:
+    #             record.nbr_amort = 0
 
-    def name_get(self):
-        result = []
-        for record in self:
-            rec_name = "%s" %(record.nom)
-            result.append((record.id, rec_name))
-        return result
+    # def name_get(self):
+    #     result = []
+    #     for record in self:
+    #         rec_name = "%s" %(record.nom)
+    #         result.append((record.id, rec_name))
+    #     return result
+
+    # @api.model
+    # def create(self, vals):
+    #     # print(vals)
+    #     print(super(RobeOccasion, self).create({'robe_model_id': 26, 'reservation_ids': [], 'nbr_amort' : 5}))
+    #     return super(RobeOccasion, self).create(vals)
+
+    def _test():
+        print("--------------------------------------")
+        print("--------------------------------------")
+        print("--------------------------------------")
+        print("--------------------------------------")
+        print("--------------------------------------")
+        print("--------------------------------------")

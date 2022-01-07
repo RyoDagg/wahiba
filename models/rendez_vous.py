@@ -35,7 +35,7 @@ class RendezVous(models.Model):
     @api.depends('services_ids', 'reservation_id.robe_id')
     def _calc_prix_tot(self):
         for record in self:
-            record.prix_total = sum(record.mapped('services_ids.prix')) + record.reservation_id.robe_id.prix_location
+            record.prix_total = sum(record.mapped('services_ids.prix')) + record.reservation_id.robe_id.robe_model_id.prix_location
 
     @api.depends('prix_total', 'avance', )
     def _clac_reste_paye(self):
