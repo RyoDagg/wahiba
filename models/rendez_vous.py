@@ -13,7 +13,7 @@ class RendezVous(models.Model):
         string="Services",
         comodel_name="service.esthetique")
 
-    date_event = fields.Datetime(string="Date d'evenment")
+    date_event = fields.Datetime(string="Date-heure d'evenment")
 
     reservation_id = fields.Many2one(
         string="Reservation accosié a ce Rendez-Vous.",

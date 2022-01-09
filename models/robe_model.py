@@ -53,12 +53,6 @@ class RobeModel(models.Model):
     @api.model
     def create(self, vals):
         res = super(RobeModel, self).create(vals)
-        # print("--------------------------------------")
-        # print(res)
-        # print("--------------------------------------")
-        # print('*-*-*-*-*-*-*-*-*-*-*-*-*-*-')
-        # print(res.nom)
-        # print('*-*-*-*-*-*-*-*-*-*-*-*-*-*-')
         for i in range(vals["quant"]):
             super(rboc.RobeOccasion, self.env['robe.occasion']).create({
                 'model_id': res.id,
@@ -70,8 +64,6 @@ class RobeModel(models.Model):
     @api.depends('type')
     def _generate_ref(self):
         for robe in self:
-            # print('New Type assigned', robe.type, robe.quant) #self <-- values test message
-            # code = str(self.env.search_count([('', '=', 'entry')]))
             robe.ref = str(robe.type).upper() + '#' + str(id(robe.id)).upper()
 
     def name_get(self):

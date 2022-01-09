@@ -31,11 +31,11 @@ class RobeOccasion(models.Model):
     nbr_amort = fields.Integer(
         string = "Nombre d'mortissement",
         default = 0,
-        compute = 'calc_nbr_amort'
+        compute = '_calc_nbr_amort'
     )
 
     @api.depends('reservation_ids')
-    def calc_nbr_amort(self):
+    def _calc_nbr_amort(self):
         for record in self:
             if record.reservation_ids:
                 count = 0

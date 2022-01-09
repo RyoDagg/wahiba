@@ -35,7 +35,6 @@
                 <field name="client_id" widget="many2one_clickable"/>
                 <field name="robe_id" widget="many2one_clickable"/>
                 <field name="date_location"/>
-                <field name="duree"/>
             </tree>
         </field>
     </record>
