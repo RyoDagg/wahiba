@@ -2,7 +2,7 @@ from odoo import models, fields
 
 class ResPartner(models.Model):
     _inherit = 'res.partner'
-    _description = 'Client'
+    _description = 'User'
 
     nom = fields.Char("Nom")
     prenom = fields.Char("Prenom")

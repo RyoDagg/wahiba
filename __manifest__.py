@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "Espace Wahiba",
+    'name': "Texitile Production and Stock Mangement",
 
-    'summary': "Système de gestion des réservations pour Espace Wahiba",
+    'summary': "Système de gestion Textile",
 
     'description': """
         Long description of module's purpose
@@ -18,8 +18,10 @@
     # any module necessary for this one to work correctly
     'depends': ['base'],
     'data' : [
-        'views/espace_wahiba_view.xml',
+        'views/actions_view.xml',
         'views/menu_views.xml',
-        'views/wahiba_trees.xml'
+        'views/forms/prototype_form.xml',
+        'views/trees/prototype_tree.xml',
+        'views/trees/matiere_tree.xml'
     ],
 }

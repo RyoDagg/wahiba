@@ -1,2 +1,5 @@
-from . import robe_occasion, res_partner, robe_tag, reservation_robe, rendez_vous
-from . import service_esthetique, robe_model
+from . import matiere_premier
+from . import production_produit
+from . import produit_matiere
+from . import produit_prototype
+from . import unite_mesure

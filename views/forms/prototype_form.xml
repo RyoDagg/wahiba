@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="produit_view_form" model="ir.ui.view">
+        <field name="name">produit.prototype.form</field>
+        <field name="model">produit.prototype</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <h1>
+                            <field name="nom"/>
+                        </h1>
+                        <field name="photo" widget="image" class="oe_avatar"/>
+                    </group>
+                    <group>
+                        <field name="description"/>
+                        <field name="stock"/>
+                    </group>
+                    <notebook>
+                        <page string="Matière">
+                            <group>
+                                <field name="matiere_ids" widget="many2many_tags">
+                                    <!-- <field name="matiere_id">
+                                        <field name="nom"/>
+                                    </field>
+                                    <field name="quantite"/> -->
+                                </field>
+                            </group>
+                        </page>
+                        <page string="Production">
+                            <group>
+
+                            </group>
+                        </page>
+                        <page string="Other Info">
+                            <group>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

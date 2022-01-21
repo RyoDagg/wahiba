@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<odoo>
+	<record id="produit_action" model="ir.actions.act_window">
+		<field name="name">Liste des Produit</field>
+		<field name="res_model">produit.prototype</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+
+	<record id="matiere_action" model="ir.actions.act_window">
+		<field name="name">Liste des Matières premières</field>
+		<field name="res_model">matiere.premier</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+
+	<record id="prod_mat_action" model="ir.actions.act_window">
+		<field name="name">Produit/Matiere</field>
+		<field name="res_model">produit.matiere</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+
+	<record id="production_action" model="ir.actions.act_window">
+        <field name="name">Production List</field>
+		<field name="res_model">production.produit</field>
+		<field name="view_mode">tree,form</field>
+    </record>
+
+	<record id="unite_action" model="ir.actions.act_window">
+		<field name="name">Unités des mesures</field>
+		<field name="res_model">unite.mesure</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+
+</odoo>

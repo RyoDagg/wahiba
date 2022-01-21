@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="produit_view_tree" model="ir.ui.view">
+        <field name="name">produit.prototype.tree</field>
+        <field name="model">produit.prototype</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="nom"/>
+                <field name="matiere_ids" widget='many2many_tags'/>
+                <field name="stock"/>
+            </tree>
+        </field>
+    </record>
+
+</odoo>
